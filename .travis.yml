@@ -1,8 +1,9 @@
+language: ruby
 before_install:
-  - curl --compressed --create-dirs --location --remote-name --remote-time --retry 3 --show-error --url https://github.com/spf13/hugo/releases/download/v0.10/hugo_0.10_linux_amd64.tar.gz
+  - gem update --system
+  - gem update
 install:
-  - tar -xzf hugo_0.10_linux_amd64.tar.gz
-  - sudo mv hugo_0.10_linux_amd64/hugo_0.10_linux_amd64 /usr/local/bin/
+  - gem install jekyll
 script:
-  - hugo_0.10_linux_amd64 -s .
+  - jekyll build
 
