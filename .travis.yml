@@ -1,10 +1,12 @@
 language: ruby
 before_install:
   - gem update --system
-install:
-  - gem install jekyll
-before_script:
   - gem update
+install:
+  - gem install jekyll  
 script:
   - jekyll build
+cache: 
+  bundler: true
+
 
