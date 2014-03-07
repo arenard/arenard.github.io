@@ -15,3 +15,8 @@ script:
   - hugo_0.10_linux_amd64 -s .
 
 after_success:
+  - git checkout master
+  - git checkout source public
+  - git mv public .
+  - git add -A .
+  - git commit -m "test"
