@@ -1,3 +1,6 @@
+branches:
+  only:
+    - source
 cache:
   apt: true
 
@@ -5,13 +8,15 @@ before_install:
   - curl --compressed --create-dirs --location --remote-name --remote-time --retry 3 --show-error --url https://github.com/spf13/hugo/releases/download/v0.10/hugo_0.10_linux_amd64.tar.gz
 install:
   - tar -xzf hugo_0.10_linux_amd64.tar.gz
-  - sudo mv hugo_0.10_linux_amd64/hugo_0.10_linux_amd64 /usr/local/bin/
+  - sudo mv hugo_0.10_linux_amd64/hugo_0.10_linux_amd64 /usr/local/bin/hugo
+  - rm -Rf hugo_*_linux_amd64*
   - sudo apt-get install python-pygments
 
 script:
-  - hugo_0.10_linux_amd64 -s .
+  - hugo -s .
 
 after_success:
+  - ls -la
   - git config --global user.email "arenard@travis-ci.org"
   - git config --global user.name "Travis-CI"
   - git branch
