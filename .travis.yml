@@ -25,9 +25,9 @@ script:
   - hugo -s .
 
 after_success:
+  - git config --global push.default simple
   - git config --global user.email "arenard@travis-ci.org"
   - git config --global user.name "Travis-CI"
-  - git config --global push.default simple
   - mkdir -p ${HOME}/temp
   - cd ${HOME}/temp
   - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
