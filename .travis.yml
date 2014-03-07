@@ -26,9 +26,10 @@ after_success:
   - git config --global user.name "Travis-CI"
   - git config --global push.default simple
   - mkdir -p ${HOME}/temp
-  - git clone --branch=master git://github.com/arenard/arenard.github.io.git arenard/arenard.github.io
-  - mv ${TRAVIS_BUILD_DIR}/public/ $TRAVIS_REPO_SLUG
-  - cd $TRAVIS_REPO_SLUG
+  - cd ${HOME}/temp
+  - git clone --branch=master git://github.com/arenard/arenard.github.io.git ${TRAVIS_REPO_SLUG}
+  - mv ${TRAVIS_BUILD_DIR}/public ${TRAVIS_REPO_SLUG}
+  - cd ${TRAVIS_REPO_SLUG}
   - git add -A .
   - git commit -m "test"
   - ls -la
