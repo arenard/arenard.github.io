@@ -30,7 +30,7 @@ after_success:
   - git config --global push.default simple
   - mkdir -p ${HOME}/temp
   - cd ${HOME}/temp
-  - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
+  - git clone --branch=master https://${GITHUB_TOKEN}:@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
   - cd ${TRAVIS_REPO_SLUG}
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
