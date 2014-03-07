@@ -31,4 +31,5 @@ after_success:
   - cd $TRAVIS_REPO_SLUG
   - git add -A .
   - git commit -m "test"
+  - ls -la
   - git push
