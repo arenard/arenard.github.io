@@ -4,7 +4,7 @@ branches:
 cache:
   apt: true
 env: 
-  - HUGO_VERSION="0.10" secure: "Kpn6PVrVhlg+iq5tLAn3zLwLwTYYvEAgcMt8bhJAg0BER4UKgTcx8JvcPTaIr4EyoqMXk/YBRQpEeH9d4AsvCupwxYBlLhF4fjNTagIJJdObq5V0eYsNRHHnJUbiU1EkVtcOnbdVEz84u7xGo4J1bCI1gnzEY+3RnjZiUxeO4HE=" 
+  - HUGO_VERSION="0.10" secure: "dgRBYKR0A5HEtll5OlR+c5HMkAziELKuCxF7Pm6lubZJBR8NN5hWghlb6yQNjEQRYMPuYMprbs931sHjEsF7nvWCn+Chq1ixSG4HJGSWo/4dh6lZ1AgwpuQk0kcDQs28ut8+A3q7xA9VJmv/NamSXzZccBSiCjbFLslWqfReVFc=" 
 
 before_install:
   - mkdir -p ${HOME}/temp
@@ -27,9 +27,9 @@ after_success:
   - git config --global push.default simple
   - mkdir -p ${HOME}/temp
   - cd ${HOME}/temp
-  - git clone --branch=master git://github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
+  - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
   - cd ${TRAVIS_REPO_SLUG}
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
   - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
-  - git push
+  - git push  
