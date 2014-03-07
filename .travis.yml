@@ -31,9 +31,6 @@ after_success:
   - cd ${TRAVIS_REPO_SLUG}
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
-  - git commit -m ""Travis build ${TRAVIS_BUILD_NUMBER}"
-  - pwd
-  - ls -la
+  - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
   - git push origin master
-  
   
