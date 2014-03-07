@@ -1,3 +1,7 @@
+language: go
+branches:
+  only:
+    - source
 before_install:
   - curl --compressed --create-dirs --location --remote-name --remote-time --retry 3 --show-error --url https://github.com/spf13/hugo/releases/download/v0.10/hugo_0.10_linux_amd64.tar.gz
 install:
