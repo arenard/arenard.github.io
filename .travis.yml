@@ -4,7 +4,7 @@ branches:
 cache:
   apt: true
 env: 
-  - HUGO_VERSION="0.10" secure: "UvXAewAhOCOPJ20/YSixZYiNcMPKcKvR2kW8B/xo6sitjngy5+uEghLsI5gCnosnF/Plyv1jkAhXZr8cMq7cQcTV9HluP+g9MkJmf4i2ez93UcV+YDYY6ib5Nnn2n3bKZgDEZYiw/ALge7GoCtpEThfNaF865kyJF0GtujJF7cU=" 
+  - HUGO_VERSION="0.10" secure: "Kpn6PVrVhlg+iq5tLAn3zLwLwTYYvEAgcMt8bhJAg0BER4UKgTcx8JvcPTaIr4EyoqMXk/YBRQpEeH9d4AsvCupwxYBlLhF4fjNTagIJJdObq5V0eYsNRHHnJUbiU1EkVtcOnbdVEz84u7xGo4J1bCI1gnzEY+3RnjZiUxeO4HE=" 
 
 before_install:
   - mkdir -p ${HOME}/temp
@@ -32,5 +32,4 @@ after_success:
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
   - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
-  - git push origin master
-  
+  - git push  
