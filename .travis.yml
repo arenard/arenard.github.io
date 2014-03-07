@@ -1,11 +1,14 @@
 branches:
   only:
-    - source
+  - source
 cache:
   apt: true
-env: 
-  - HUGO_VERSION="0.10" secure: "dgRBYKR0A5HEtll5OlR+c5HMkAziELKuCxF7Pm6lubZJBR8NN5hWghlb6yQNjEQRYMPuYMprbs931sHjEsF7nvWCn+Chq1ixSG4HJGSWo/4dh6lZ1AgwpuQk0kcDQs28ut8+A3q7xA9VJmv/NamSXzZccBSiCjbFLslWqfReVFc=" 
-
+env:
+  matrix:
+    - HUGO_VERSION="0.10"
+  global:
+    secure: Ul+muxBGBpq3Btjf5z1jZRqhjXGHT2fv3pQ9Pbm3+7MxHB/9krOlIYWAXKSbxzpddln8u5/ecHVfjV/zkMaVMRaItZy2jCQN15tk9fXfsSOR3Wm3HN8nnHSWJctB3p5E0eVwv3CDHtn/3y/X4vMKqEDlqd/G85eN1/XLBuEoKgI=
+    
 before_install:
   - mkdir -p ${HOME}/temp
   - cd ${HOME}/temp
@@ -16,7 +19,7 @@ install:
   - sudo mv hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
   - sudo apt-get install python-pygments
   - cd ${TRAVIS_BUILD_DIR}
-  - rm -Rf ${HOME}/temp 
+  - rm -Rf ${HOME}/temp
 
 script:
   - hugo -s .
@@ -32,4 +35,4 @@ after_success:
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
   - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
-  - git push  
+  - git push
