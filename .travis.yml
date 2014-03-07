@@ -4,7 +4,8 @@ branches:
 cache:
   apt: true
 env: 
-  - "HUGO_VERSION=0.10" secure: "UvXAewAhOCOPJ20/YSixZYiNcMPKcKvR2kW8B/xo6sitjngy5+uEghLsI5gCnosnF/Plyv1jkAhXZr8cMq7cQcTV9HluP+g9MkJmf4i2ez93UcV+YDYY6ib5Nnn2n3bKZgDEZYiw/ALge7GoCtpEThfNaF865kyJF0GtujJF7cU=" 
+  - secure: "UvXAewAhOCOPJ20/YSixZYiNcMPKcKvR2kW8B/xo6sitjngy5+uEghLsI5gCnosnF/Plyv1jkAhXZr8cMq7cQcTV9HluP+g9MkJmf4i2ez93UcV+YDYY6ib5Nnn2n3bKZgDEZYiw/ALge7GoCtpEThfNaF865kyJF0GtujJF7cU="
+  - "HUGO_VERSION=0.10" 
 
 before_install:
   - mkdir -p ${HOME}/temp
