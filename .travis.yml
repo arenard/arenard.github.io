@@ -3,6 +3,9 @@ before_install:
 install:
   - tar -xzf hugo_0.10_linux_amd64.tar.gz
   - sudo mv hugo_0.10_linux_amd64/hugo_0.10_linux_amd64 /usr/local/bin/
+  - sudo apt-get install python-pygments
 script:
   - hugo_0.10_linux_amd64 -s .
+cache:
+  apt: true
 
