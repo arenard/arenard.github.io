@@ -15,6 +15,9 @@ script:
   - hugo_0.10_linux_amd64 -s .
 
 after_success:
+  - git config --global user.email "arenard@travis-ci.org"
+  - git config --global user.name "Travis-CI"
+  - git branch
   - git checkout master
   - git checkout source public
   - git mv public .
