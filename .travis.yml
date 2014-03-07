@@ -28,9 +28,10 @@ after_success:
   - mkdir -p ${HOME}/temp
   - cd ${HOME}/temp
   - git clone --branch=master git://github.com/arenard/arenard.github.io.git ${TRAVIS_REPO_SLUG}
-  - mv ${TRAVIS_BUILD_DIR}/public ${TRAVIS_REPO_SLUG}
   - cd ${TRAVIS_REPO_SLUG}
+  - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
   - git commit -m "test"
+  - pwd
   - ls -la
   - git push
