@@ -14,6 +14,7 @@ before_install:
   - cd ${HOME}/temp
   - curl --compressed --create-dirs --location --remote-name --remote-time --retry 3 --show-error --url https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux_amd64.tar.gz
   - tar -xzf hugo_${HUGO_VERSION}_linux_amd64.tar.gz
+  - sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 
 install:
   - sudo mv hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
