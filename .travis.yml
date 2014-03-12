@@ -33,6 +33,7 @@ after_success:
   - cd ${HOME}/temp
   - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
   - cd ${TRAVIS_REPO_SLUG}
+  - rm -Rf .*
   - mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
   - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
