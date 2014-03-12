@@ -19,8 +19,10 @@ install:
   - sudo apt-get -y install python-pygments
   - sudo mv hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
 
-script:
+before_script:
   - cd ${TRAVIS_BUILD_DIR}
+
+script:
   - hugo version && hugo -s .
 
 after_success:
@@ -32,4 +34,6 @@ after_success:
   - git add -A .
   - git commit -m "Travis-CI build ${TRAVIS_BUILD_NUMBER}"
   - git push
+
+after_script:
   - rm -Rf ${HOME}/temp
