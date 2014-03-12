@@ -21,7 +21,7 @@ install:
 
 script:
   - cd ${TRAVIS_BUILD_DIR}
-  - hugo -s .
+  - hugo version && hugo -s .
 
 after_success:
   - git config --global push.default simple
