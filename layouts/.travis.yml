@@ -10,29 +10,30 @@ env:
     secure: Ul+muxBGBpq3Btjf5z1jZRqhjXGHT2fv3pQ9Pbm3+7MxHB/9krOlIYWAXKSbxzpddln8u5/ecHVfjV/zkMaVMRaItZy2jCQN15tk9fXfsSOR3Wm3HN8nnHSWJctB3p5E0eVwv3CDHtn/3y/X4vMKqEDlqd/G85eN1/XLBuEoKgI=
     
 before_install:
-  - mkdir -p ${HOME}/temp
-  - cd ${HOME}/temp
+  - mkdir -p ${HOME}/temp && cd ${HOME}/temp
+  - sudo apt-get -y update
   - curl --compressed --create-dirs --location --remote-name --remote-time --retry 3 --show-error --url https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux_amd64.tar.gz
   - tar -xzf hugo_${HUGO_VERSION}_linux_amd64.tar.gz
 
 install:
+  - sudo apt-get -y install python-pygments
   - sudo mv hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
-  - sudo apt-get install python-pygments
+
+before_script:
   - cd ${TRAVIS_BUILD_DIR}
-  - rm -Rf ${HOME}/temp
 
 script:
-  - hugo -s .
+  - hugo version && hugo -s .
 
 after_success:
+  - git config --global push.default simple
   - git config --global user.email "arenard@travis-ci.org"
   - git config --global user.name "Travis-CI"
-  - git config --global push.default simple
-  - mkdir -p ${HOME}/temp
-  - cd ${HOME}/temp
-  - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${TRAVIS_REPO_SLUG}
-  - cd ${TRAVIS_REPO_SLUG}
-  - mv ${TRAVIS_BUILD_DIR}/public/* .
+  - git clone --branch=master https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${HOME}/temp/${TRAVIS_REPO_SLUG}
+  - cd ${HOME}/temp/${TRAVIS_REPO_SLUG} && rm -Rf ./* && mv ${TRAVIS_BUILD_DIR}/public/* .
   - git add -A .
-  - git commit -m "Travis build ${TRAVIS_BUILD_NUMBER}"
+  - git commit -m "Travis-CI build ${TRAVIS_BUILD_NUMBER}"
   - git push
+
+after_script:
+  - rm -Rf ${HOME}/temp
